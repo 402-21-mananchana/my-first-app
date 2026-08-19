@@ -12,7 +12,6 @@ if "ans3_val" not in st.session_state:
     st.session_state.ans3_val = ""
 if "ans4_val" not in st.session_state:
     st.session_state.ans4_val = ""
-    
 
 
 # 📌 ฟังก์ชันเคลียร์ค่าเมื่อกดปุ่มเริ่มใหม่
@@ -37,7 +36,6 @@ def show_result_dialog(ans1, ans2, ans3, ans4):
     u_ans2 = ans2.strip().lower()
     u_ans3 = ans3.strip().lower()
     u_ans4 = ans4.strip().lower()
-    
 
     # ตรวจข้อ 1
     if u_ans1 == "apple":
@@ -53,16 +51,16 @@ def show_result_dialog(ans1, ans2, ans3, ans4):
     else:
         st.error(f"❌ ข้อ 2: ยังไม่ถูกต้อง (คุณตอบ '{u_ans2}')")
 
-    # ตรวจข้อ 3
-    if u_ans3 == "Banana":
-         st.success("✅ ข้อ 3: ถูกต้อง")
+    # ตรวจข้อ 3 (แก้ไขเปรียบเทียบเป็นพิมพ์เล็ก)
+    if u_ans3 == "banana":
+        st.success("✅ ข้อ 3: ถูกต้อง")
         score += 1
     else:
         st.error(f"❌ ข้อ 3: ยังไม่ถูกต้อง (คุณตอบ '{u_ans3}')")
-    
-    # ตรวจข้อ 4
-    if u_ans4 == "Pencil":
-         st.success("✅ ข้อ 4: ถูกต้อง")
+
+    # ตรวจข้อ 4 (แก้ไขเปรียบเทียบเป็นพิมพ์เล็ก)
+    if u_ans4 == "pencil":
+        st.success("✅ ข้อ 4: ถูกต้อง")
         score += 1
     else:
         st.error(f"❌ ข้อ 4: ยังไม่ถูกต้อง (คุณตอบ '{u_ans4}')")
@@ -92,7 +90,7 @@ if "start" in st.session_state and not st.session_state.get("is_ended", False):
 
 st.divider()
 
-# 3. ช่องรับคำตอบ (ใช้ value ผูกกับตัวแปรตรงๆ เพื่อสั่งเคลียร์ได้)
+# 3. ช่องรับคำตอบ
 ans1 = st.text_input(
     "ข้อ 1: An `a _ _ l e` a day keeps the doctor away. 🍎",
     value=st.session_state.ans1_val,
@@ -102,12 +100,13 @@ ans2 = st.text_input(
     value=st.session_state.ans2_val,
 )
 ans3 = st.text_input(
-    "ข้อ 3:Monky love to eat `B _ n _ _ a`. 🍌",
+    "ข้อ 3: Monkey love to eat `B _ n _ _ a`. 🍌",
     value=st.session_state.ans3_val,
 )
 ans4 = st.text_input(
     "ข้อ 4: We use `P _ n _ _ l` to write or draw on paper. ✏️",
     value=st.session_state.ans4_val,
+)  # เติมวงเล็บปิดตรงนี้
 
 # อัปเดตค่าล่าสุดเข้าตัวแปร
 st.session_state.ans1_val = ans1
